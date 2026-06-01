@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
   }
 
   backend "s3" {
@@ -17,4 +21,8 @@ terraform {
 
 provider "aws" {
   region = "eu-west-2"
+}
+
+provider "azurerm" {
+  features {}
 }
