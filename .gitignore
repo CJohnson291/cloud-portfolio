@@ -20,3 +20,4 @@ __pycache__/
 # Credentials
 *.pem
 *.key
+api.zip
