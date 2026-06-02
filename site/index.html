@@ -808,7 +808,7 @@ index.html
 
     async function fetchVisitorCount() {
       try {
-        const res = await fetch(`${API_BASE}/api/visitor-count`, { method: 'POST' });
+        const res = await fetch(`${API_BASE}/api/visitor_count`, { method: 'POST' });
         const data = await res.json();
         const count = data.count.toLocaleString();
         document.getElementById('visitor-count').textContent = count;
