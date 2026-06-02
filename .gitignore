@@ -21,3 +21,4 @@ __pycache__/
 *.pem
 *.key
 api.zip
+.DS_Store
