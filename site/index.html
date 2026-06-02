@@ -818,27 +818,27 @@ index.html
       }
     }
 
-    async function fetchHealth() {
-      try {
-        const res = await fetch(`${API_BASE}/api/health`);
-        const data = await res.json();
+   async function fetchHealth() {
+  try {
+    const res = await fetch(`${API_BASE}/api/health`);
+    const data = await res.json();
 
-        const setStatus = (id, ok, label) => {
-          document.getElementById(`dot-${id}`).className = `status-dot ${ok ? 'online' : 'offline'}`;
-          document.getElementById(`status-${id}`).textContent = label;
-        };
+    const setStatus = (id, ok, label) => {
+      document.getElementById(`dot-${id}`).className = `status-dot ${ok ? 'online' : 'offline'}`;
+      document.getElementById(`status-${id}`).textContent = label;
+    };
 
-        setStatus('cloudfront', data.cloudfront, data.cloudfront ? 'operational' : 'degraded');
-        setStatus('api', data.api, data.api ? 'operational' : 'degraded');
-        setStatus('storage', data.storage, data.storage ? 'operational' : 'degraded');
-        setStatus('pipeline', data.pipeline, data.pipeline ? 'operational' : 'unknown');
-      } catch {
-        ['cloudfront','api','storage','pipeline'].forEach(id => {
-          document.getElementById(`dot-${id}`).className = 'status-dot offline';
-          document.getElementById(`status-${id}`).textContent = 'unable to reach API';
-        });
-      }
-    }
+    setStatus('cloudfront', data.checks.cloudfront, data.checks.cloudfront ? 'operational' : 'degraded');
+    setStatus('api', data.checks.api, data.checks.api ? 'operational' : 'degraded');
+    setStatus('storage', data.checks.storage, data.checks.storage ? 'operational' : 'degraded');
+    setStatus('pipeline', data.checks.pipeline, data.checks.pipeline ? 'operational' : 'unknown');
+  } catch {
+    ['cloudfront','api','storage','pipeline'].forEach(id => {
+      document.getElementById(`dot-${id}`).className = 'status-dot offline';
+      document.getElementById(`status-${id}`).textContent = 'unable to reach API';
+    });
+  }
+}
 
     fetchVisitorCount();
     fetchHealth();
