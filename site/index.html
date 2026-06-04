@@ -38,8 +38,14 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
-    .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 8rem 2.5rem 4rem; max-width: 1100px; margin: 0 auto; }
-    .hero-inner { max-width: 700px; }
+    .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 8rem 2.5rem 4rem; max-width: 1100px; margin: 0 auto; justify-content: space-between; gap: 3rem; }
+    .hero-inner { max-width: 620px; }
+    .hero-photo { flex-shrink: 0; align-self: center; }
+    .hero-photo-frame { position: relative; display: inline-block; }
+    .hero-photo-frame::before { content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px; border: 1px solid var(--accent); border-radius: 4px; opacity: 0.5; }
+    .hero-photo-frame::after { content: ''; position: absolute; top: 10px; left: 10px; right: -10px; bottom: -10px; border: 1px solid var(--accent); border-radius: 4px; opacity: 0.15; z-index: -1; }
+    .hero-photo img { width: 200px; height: 200px; border-radius: 4px; object-fit: cover; border: 1px solid var(--border); display: block; filter: grayscale(15%); transition: filter 0.3s; }
+    .hero-photo img:hover { filter: grayscale(0%); }
     .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); border: 1px solid rgba(255,107,0,0.3); background: var(--accent-dim); padding: 0.3rem 0.75rem; border-radius: 2px; margin-bottom: 1.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
     h1 { font-size: clamp(2.8rem, 6vw, 4.8rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 1.25rem; }
     h1 .slash { color: var(--accent); }
@@ -114,6 +120,15 @@
     .stack-item:hover .stack-name { color: var(--accent); }
     .stack-category { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
     .stack-name { font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+    .cert-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; transition: border-color 0.2s, background 0.2s; cursor: default; }
+    .cert-card:hover { border-color: var(--border-hover); background: var(--surface2); }
+    .cert-card img { width: 80px; height: 80px; object-fit: contain; }
+    .cert-name { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); text-align: center; line-height: 1.4; letter-spacing: 0.02em; }
+    .cert-tier { font-size: 0.6rem; color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cert-card.tier-1 { border-color: rgba(255,107,0,0.2); }
+    .cert-card.tier-1:hover { border-color: rgba(255,107,0,0.5); }
     footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     .footer-brand { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); }
     .footer-links { display: flex; gap: 1.5rem; }
@@ -140,6 +155,7 @@
       <li><a href="#projects">projects</a></li>
       <li><a href="#status">status</a></li>
       <li><a href="#stack">stack</a></li>
+      <li><a href="#certs">certs</a></li>
       <li><a href="https://github.com/CJohnson291" target="_blank">github ↗</a></li>
     </ul>
   </nav>
@@ -153,6 +169,11 @@
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="https://github.com/CJohnson291" target="_blank" class="btn btn-ghost">GitHub ↗</a>
         <a href="https://www.linkedin.com/in/chris-johnson-63b538264" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <img src="profile.jpg" alt="Chris Johnson" />
       </div>
     </div>
   </div>
@@ -177,8 +198,8 @@
           <div class="project-title">Cross-Cloud Portfolio Platform</div>
           <div class="project-desc">Static site hosted on AWS (S3 + CloudFront), backend API running on Azure Functions (Python 3.11). Fully provisioned via Terraform, deployed via GitHub Actions CI/CD pipelines. Unified observability across both clouds via Grafana Cloud. The site you're looking at right now.</div>
           <div class="project-tags">
-            <span class="tag tag-aws">AWS S3</span><span class="tag tag-aws">CloudFront</span><span class="tag">Azure Functions</span>
-            <span class="tag">Python 3.11</span><span class="tag tag-iac">Terraform</span><span class="tag tag-cicd">GitHub Actions</span><span class="tag tag-obs">Grafana</span>
+            <span class="tag tag-aws">AWS S3</span><span class="tag tag-aws">CloudFront</span><span class="tag tag-azure">Azure Functions</span>
+            <span class="tag tag-lang">Python 3.11</span><span class="tag tag-iac">Terraform</span><span class="tag tag-cicd">GitHub Actions</span><span class="tag tag-obs">Grafana</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/CJohnson291/cloud-portfolio" target="_blank">→ GitHub</a>
@@ -293,6 +314,97 @@ State: <span class="hl">S3</span> + DynamoDB lock</div>
       <div class="stack-item"><div class="stack-category">language</div><div class="stack-name">Python</div></div>
       <div class="stack-item"><div class="stack-category">language</div><div class="stack-name">Bash</div></div>
       <div class="stack-item"><div class="stack-category">security</div><div class="stack-name">IAM / RBAC</div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="certs">
+    <p class="section-label">// credentials</p>
+    <h2>Certifications</h2>
+    <p class="section-desc">19 certifications across cloud, security, and infrastructure.</p>
+    <div class="certs-grid">
+      <div class="cert-card tier-1">
+        <img src="badges/badge-aws-saa.png" alt="AWS Solutions Architect" />
+        <div class="cert-name">AWS Solutions Architect Associate</div>
+        <div class="cert-tier">★ flagship</div>
+      </div>
+      <div class="cert-card tier-1">
+        <img src="badges/badge-terraform.png" alt="Terraform Associate" />
+        <div class="cert-name">HashiCorp Terraform Associate 004</div>
+        <div class="cert-tier">★ flagship</div>
+      </div>
+      <div class="cert-card tier-1">
+        <img src="badges/badge-az104.png" alt="Azure Administrator" />
+        <div class="cert-name">Azure Administrator Associate</div>
+        <div class="cert-tier">★ flagship</div>
+      </div>
+      <div class="cert-card tier-1">
+        <img src="badges/badge-comptia-cloud.png" alt="CompTIA Cloud+" />
+        <div class="cert-name">CompTIA Cloud+</div>
+        <div class="cert-tier">★ flagship</div>
+      </div>
+      <div class="cert-card tier-1">
+        <img src="badges/badge-aws-ccp.png" alt="AWS Cloud Practitioner" />
+        <div class="cert-name">AWS Cloud Practitioner</div>
+        <div class="cert-tier">★ flagship</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-sec.png" alt="CompTIA Security+" />
+        <div class="cert-name">CompTIA Security+</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-cysa.png" alt="CompTIA CySA+" />
+        <div class="cert-name">CompTIA CySA+</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-sc900.svg" alt="SC-900" />
+        <div class="cert-name">SC-900 Security, Compliance &amp; Identity</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-az900.png" alt="Azure Fundamentals" />
+        <div class="cert-name">Azure Fundamentals AZ-900</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-ccap.png" alt="CompTIA CCAP" />
+        <div class="cert-name">CompTIA CCAP</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-csap.png" alt="CompTIA CSAP" />
+        <div class="cert-name">CompTIA CSAP</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-cscp.png" alt="CompTIA CSCP" />
+        <div class="cert-name">CompTIA CSCP</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-csis.png" alt="CompTIA CSIS" />
+        <div class="cert-name">CompTIA CSIS</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-itop.png" alt="CompTIA ITOps" />
+        <div class="cert-name">CompTIA ITOps</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-m365-endpoint.png" alt="Endpoint Admin" />
+        <div class="cert-name">Azure Endpoint Administrator</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-ms-teams.png" alt="Teams Admin" />
+        <div class="cert-name">Microsoft Teams Administrator</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-ms900.png" alt="M365 Fundamentals" />
+        <div class="cert-name">Microsoft 365 Fundamentals</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-net.png" alt="CompTIA Network+" />
+        <div class="cert-name">CompTIA Network+</div>
+      </div>
+      <div class="cert-card">
+        <img src="badges/badge-comptia-a.png" alt="CompTIA A+" />
+        <div class="cert-name">CompTIA A+</div>
+      </div>
     </div>
   </section>
 
