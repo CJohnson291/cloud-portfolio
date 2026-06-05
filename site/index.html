@@ -341,24 +341,26 @@ State: <span class="hl">S3</span> + DynamoDB lock</div>
       <div class="project-badge badge-aws" style="background:rgba(255,153,0,0.1);color:#ff9900;border:1px solid rgba(255,153,0,0.2);">AWS Cost Explorer</div>
       <div class="project-title">Service Cost Breakdown</div>
       <div class="project-desc">CloudFront, S3, DynamoDB and KMS — the full AWS resource footprint for this project at portfolio traffic levels.</div>
-      <img src="aws-portfolio-resourcecost.png" alt="AWS Cost Explorer showing $0.00 spend" style="width:100%;border:1px solid var(--border);border-radius:2px;mar
-  <section id="stack">
-    <p class="section-label">// stack</p>
-    <h2>Tools & Technologies</h2>
-    <p class="section-desc">The full stack behind this platform.</p>
-    <div class="stack-grid">
-      <div class="stack-item"><div class="stack-category">cloud</div><div class="stack-name">AWS</div></div>
-      <div class="stack-item"><div class="stack-category">cloud</div><div class="stack-name">Azure</div></div>
-      <div class="stack-item"><div class="stack-category">IaC</div><div class="stack-name">Terraform</div></div>
-      <div class="stack-item"><div class="stack-category">CI/CD</div><div class="stack-name">GitHub Actions</div></div>
-      <div class="stack-item"><div class="stack-category">compute</div><div class="stack-name">Azure Functions</div></div>
-      <div class="stack-item"><div class="stack-category">cdn</div><div class="stack-name">CloudFront</div></div>
-      <div class="stack-item"><div class="stack-category">observability</div><div class="stack-name">Grafana Cloud</div></div>
-      <div class="stack-item"><div class="stack-category">language</div><div class="stack-name">Python</div></div>
-      <div class="stack-item"><div class="stack-category">language</div><div class="stack-name">Bash</div></div>
-      <div class="stack-item"><div class="stack-category">security</div><div class="stack-name">IAM / RBAC</div></div>
+      <img src="aws-portfolio-resourcecost.png" alt="AWS Cost Explorer" style="width:100%;border:1px solid var(--border);border-radius:2px;margin-top:0.5rem;"/>
     </div>
-  </section>
+    <div class="project-card">
+      <div class="project-badge" style="background:rgba(255,107,0,0.12);color:var(--accent);border:1px solid rgba(255,107,0,0.25);font-family:'JetBrains Mono',monospace;font-size:0.65rem;padding:0.2rem 0.6rem;border-radius:2px;">AWS Budget</div>
+      <div class="project-title">Kill Switch Configuration</div>
+      <div class="project-desc">$5 budget with automated IAM deny policy at 100% threshold. Blocks S3, CloudFront and DynamoDB — shutting down the platform without manual intervention.</div>
+      <img src="aws-portfolio-alert.png" alt="AWS Budget kill switch" style="width:100%;border:1px solid var(--border);border-radius:2px;margin-top:0.5rem;"/>
+    </div>
+    <div class="project-card">
+      <div class="project-badge" style="background:rgba(74,168,240,0.1);color:#4aa8f0;border:1px solid rgba(74,168,240,0.2);font-family:'JetBrains Mono',monospace;font-size:0.65rem;padding:0.2rem 0.6rem;border-radius:2px;">Azure Cost Management</div>
+      <div class="project-title">Azure Resource Cost</div>
+      <div class="project-desc">Filtered to cloud-portfolio-rg. Total Azure spend isolated from other subscriptions — £0.01 for the month.</div>
+      <img src="azure-portfolio-budget.png" alt="Azure Cost Management" style="width:100%;border:1px solid var(--border);border-radius:2px;margin-top:0.5rem;"/>
+    </div>
+  </div>
+  <div class="visitor-count">
+    <div class="visitor-number" style="font-size:1.8rem;">£0.01</div>
+    <div class="visitor-label">total monthly cost<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--muted)">// cross-cloud · AWS + Azure · production infrastructure</span></div>
+  </div>
+</section>
 
   <div class="divider"></div>
 
