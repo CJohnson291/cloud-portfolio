@@ -198,6 +198,10 @@
     <div class="stat"><span class="stat-value">2</span><span class="stat-label">// cloud providers</span></div>
     <div class="stat"><span class="stat-value" id="visitor-stat">—</span><span class="stat-label">// site visitors</span></div>
     <div class="stat"><span class="stat-value">100%</span><span class="stat-label">// IaC managed</span></div>
+    <div class="stat">
+  <span class="stat-value" id="sim-stat">—</span>
+  <span class="stat-label">// incidents simulated</span>
+</div>
   </div>
 
   <div class="divider"></div>
@@ -530,7 +534,19 @@ State: <span class="hl">S3</span> + DynamoDB lock</div>
       }
     }
     fetchVisitorCount();
-    fetchHealth();
+fetchHealth();
+
+async function fetchSimCount() {
+  try {
+    const res = await fetch('https://api.github.com/repos/CJohnson291/azure-incident-simulations/contents/');
+    const files = await res.json();
+    const count = files.filter(f => f.name.startsWith('scenario-') && f.name.endsWith('.md')).length;
+    document.getElementById('sim-stat').textContent = count;
+  } catch {
+    document.getElementById('sim-stat').textContent = '—';
+  }
+}
+fetchSimCount();
   </script>
 </body>
 </html>
