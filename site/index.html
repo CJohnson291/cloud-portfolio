@@ -194,7 +194,7 @@
   </div>
 
 <div class="stats-bar">
-    <div class="stat"><span class="stat-value">5</span><span class="stat-label">// projects shipped</span></div>
+    <div class="stat"><span class="stat-value">6</span><span class="stat-label">// projects shipped</span></div>
     <div class="stat"><span class="stat-value" id="sim-stat">—</span><span class="stat-label">// incidents simulated</span></div>
     <div class="stat"><span class="stat-value">2</span><span class="stat-label">// cloud providers</span></div>
     <div class="stat"><span class="stat-value" id="visitor-stat">—</span><span class="stat-label">// site visitors</span></div>
@@ -238,7 +238,44 @@ index.html
 <span class="hl2">GitHub Actions</span> deploys on push
 State: <span class="hl">S3</span> + DynamoDB lock</div>
       </div>
+<div class="project-card featured">
+  <div class="project-info">
+    <div class="project-badge badge-featured">★ featured</div>
+    <div class="project-title">Azure Virtual Desktop: Two Business Needs, Built with Terraform and Azure DevOps</div>
+    <div class="project-desc">Two AVD environments — one giving admin users a full desktop, one giving contractors a single published application. Provisioned with reusable Terraform modules, deployed through a gated Azure DevOps pipeline with human approval before any change reaches Azure. PR checks run Terraform format, validate and Checkov security scanning. No stored secrets — the pipeline authenticates via workload identity federation.</div>
+    <div class="project-tags">
+      <span class="tag tag-azure">Azure Virtual Desktop</span>
+      <span class="tag tag-azure">FSLogix</span>
+      <span class="tag tag-azure">Entra ID</span>
+      <span class="tag tag-iac">Terraform</span>
+      <span class="tag tag-cicd">Azure DevOps</span>
+      <span class="tag tag-sec">Checkov</span>
+      <span class="tag tag-azure">Azure Files</span>
+    </div>
+    <div class="project-links">
+      <a href="https://github.com/CJohnson291/azure-avd-terraform-ado" target="_blank">→ GitHub + full write-up</a>
+    </div>
+  </div>
+  <div class="project-arch"><span class="hl">// architecture</span>
 
+GitHub PR
+  └─► <span class="hl">Checkov</span> (security scan)
+  └─► <span class="hl">terraform fmt + validate</span>
+        └─► merge → ADO pipeline
+
+ADO Pipeline
+  └─► <span class="hl2">terraform plan</span>
+  └─► Human approval gate
+  └─► <span class="hl2">terraform apply</span>
+
+Two AVD Host Pools
+  ├─► <span class="hl">Admin desktop</span> (full Windows)
+  └─► <span class="hl">Contractor</span> (RemoteApp only)
+        └─► <span class="hl2">FSLogix</span> → Azure Files
+
+Auth: <span class="hl">Workload Identity Federation</span>
+Cost: <span class="hl2">£0.15</span> total build + test</div>
+</div>
       <div class="project-card">
         <div class="project-badge badge-k8s">kubernetes</div>
         <div class="project-title">Kubernetes Web App</div>
